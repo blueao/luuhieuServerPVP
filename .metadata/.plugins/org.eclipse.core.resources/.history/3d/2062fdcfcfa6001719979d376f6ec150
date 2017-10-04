@@ -1,0 +1,27 @@
+package Calculate;
+
+import java.util.Arrays;
+
+public class LogicHelper {
+
+	 private static LogicHelper instance = null;
+	 protected LogicHelper() {}
+	   public static LogicHelper getInstance() {
+		      if(instance == null) {
+		         instance = new LogicHelper();
+		      }
+		      return instance;
+		   }
+	public static <T> T[] append(T[] arr, T element) {
+	    final int N = arr.length;
+	    arr = Arrays.copyOf(arr, N + 1);
+	    arr[N] = element;
+	    return arr;
+	}
+	public int[] append(int[] items, int indexItems) {
+	     final int N = items.length;
+		items = Arrays.copyOf(items, N + 1);
+	    items[N] = indexItems;
+	    return items;
+	}
+}

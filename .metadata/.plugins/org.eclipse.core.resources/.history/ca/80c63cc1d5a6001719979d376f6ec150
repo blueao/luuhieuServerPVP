@@ -1,0 +1,11 @@
+package Calculate;
+
+import com.smartfoxserver.v2.protocol.serialization.SerializableSFSType;
+
+public class DataObject implements SerializableSFSType{
+	
+	int[] Items ;
+	int a;
+	String b;
+
+}

@@ -1,0 +1,44 @@
+package Calculate;
+
+import com.smartfoxserver.v2.entities.User;
+import com.smartfoxserver.v2.entities.data.ISFSObject;
+import com.smartfoxserver.v2.entities.data.SFSObject;
+import com.smartfoxserver.v2.extensions.BaseClientRequestHandler;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.security.Policy.Parameters;
+import java.util.Random;
+
+public class CalculateArrayItems extends BaseClientRequestHandler {
+
+	@Override
+	public void handleClientRequest(User user, ISFSObject obj) {
+		// TODO Auto-generated method stub
+		DataObject data = (DataObject) obj.getClass("dataObj");
+		ISFSObject objOut = new SFSObject();
+		byte[] ItemsReponse = CaculateArrayItems(5.0f);
+		objOut.putByteArray("ItemsReponse", ItemsReponse);
+		send("ObjectReponse", objOut, user);
+	}
+
+	public byte[] CaculateArrayItems(float bet) {
+		int NumberCountItems = 9;
+		int[] Items = null;
+		Random random = new Random();
+
+		int IndexItems = random.nextInt(NumberCountItems) + 1;
+		for (int i = 0; i < NumberCountItems; i++) {
+			LogicHelper.getInstance().append(Items, IndexItems);
+		}
+		byte[] array = null;
+		try {
+			array = LogicHelper.getInstance().convertToBytes(Items);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return array;
+	}
+}
